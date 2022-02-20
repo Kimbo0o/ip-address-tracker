@@ -1,23 +1,41 @@
 import styles from "./SearchForm.module.scss";
 import Image from "next/image";
+import React, { useState } from "react";
 
 const SearchForm: React.FC = () => {
-  const onIPBtnClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    event.preventDefault();
+  const loadLocationInfo = async (target: string) => {
+    const response = await fetch("/api/location", {
+      method: "POST",
+      body: JSON.stringify({ target }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data);
   };
 
+  const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    loadLocationInfo(text);
+  };
+
+  const onTextChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setText(event.target.value);
+  };
+
+  const [text, setText] = useState("");
+
   return (
-    <form className={styles["address-wrap"]}>
+    <form className={styles["address-wrap"]} onSubmit={onSubmitHandler}>
       <input
         type="text"
         className={styles["input-text-address"]}
         placeholder="Search for any IP address or domain"
+        value={text}
+        onChange={onTextChange}
       ></input>
-      <button
-        type="submit"
-        className={styles["btn-address"]}
-        onClick={onIPBtnClick}
-      >
+      <button type="submit" className={styles["btn-address"]}>
         <Image src="/icon-arrow.svg" width={11} height={14}></Image>
       </button>
     </form>
