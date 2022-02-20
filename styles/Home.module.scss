@@ -2,21 +2,20 @@
 }
 
 .header {
+  background-image: url("../public/pattern-bg.png");
+  background-size: cover;
+  background-position: center;
+  padding: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.input-address {
+.headline {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 2.5rem;
 }
 
 .main {
-}
-
-.information-wrap {
-}
-
-.information {
-  .label {
-  }
-
-  .value {
-  }
 }

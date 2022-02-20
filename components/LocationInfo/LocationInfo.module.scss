@@ -1,0 +1,19 @@
+@import "../../styles/common.scss";
+
+.info {
+  // width: 20rem;
+}
+
+.label {
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: $color-dark-gray;
+  margin-bottom: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.value {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
