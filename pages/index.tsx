@@ -6,7 +6,6 @@ import styles from "../styles/Home.module.scss";
 
 import LocationInfos from "../components/LocationInfos/LocationInfos";
 import SearchForm from "../components/SearchForm/SearchForm";
-import Map from "../components/Map/Map";
 import { useEffect, useState } from "react";
 import { ILocationAPIInternalData } from "../models/location-api";
 
