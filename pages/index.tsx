@@ -14,8 +14,10 @@ const MapNoSSR = dynamic(() => import("../components/Map/Map"), { ssr: false });
 
 const Home: NextPage = () => {
   const [showMap, setShowMap] = useState(false);
-  const [lat, setLat] = useState(51);
-  const [lng, setLng] = useState(0);
+  const [lat, setLat] = useState<number>(51);
+  const [lng, setLng] = useState<number>(0);
+  const [locationData, setLocationData] =
+    useState<ILocationAPIInternalData>(null);
 
   useEffect(() => {
     loadLocationInfo(null);
@@ -30,6 +32,7 @@ const Home: NextPage = () => {
       },
     });
     const { data }: { data: ILocationAPIInternalData } = await response.json();
+    setLocationData(data);
     updateMap(data.lat, data.lng);
   };
 
@@ -60,7 +63,7 @@ const Home: NextPage = () => {
       <header className={styles.header}>
         <h1 className={styles.headline}>IP Address Tracker</h1>
         <SearchForm onSubmit={loadLocationInfo} />
-        <LocationInfos />
+        <LocationInfos data={locationData} />
       </header>
       <main>{showMap && <MapNoSSR lat={lat} lng={lng} />}</main>
     </div>

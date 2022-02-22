@@ -3,12 +3,14 @@ import { useState } from "react";
 import styles from "./LocationInfos.module.scss";
 
 import LocationInfo from "../LocationInfo/LocationInfo";
+import { ILocationAPIInternalData } from "../../models/location-api";
 
-const LocationInfos: React.FC = () => {
-  const [ip, setIp] = useState("192.212.174.101");
-  const [location, setLocation] = useState("Brooklyn, NY 10001");
-  const [timezone, setTimezone] = useState("UTC-05:00");
-  const [isp, setIsp] = useState("SpaceX Starlink");
+const LocationInfos: React.FC<{ data: ILocationAPIInternalData }> = (props) => {
+  const data = props.data;
+  const ip = data?.ip || "";
+  const location = data?.location || "";
+  const timezone = data?.timezone || "";
+  const isp = data?.isp || "";
 
   return (
     <div className={styles.infos}>
