@@ -7,7 +7,7 @@ import {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<any> //TODO: Define type
+  res: NextApiResponse
 ) {
   const target = req.body.target || req.socket.remoteAddress;
   let targetParam = _isValidIP(target)
@@ -15,10 +15,8 @@ export default async function handler(
     : `domain=${target}`;
   const key = process.env.GEOLOCATION_APIKEY;
   const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${key}&${targetParam}`;
-  console.log(url);
   const response = await fetch(url);
   const extData = (await response.json()) as ILocationAPIExternalData;
-  console.log(extData);
   if (extData.ip) {
     const data: ILocationAPIInternalData = {
       ip: extData.ip,
@@ -28,7 +26,7 @@ export default async function handler(
       lat: extData.location.lat,
       lng: extData.location.lng,
     };
-    res.status(200).json({ data });
+    res.status(200).json({ data, address: target });
   } else {
     res.status(422).json({ message: "Input could not be processed" });
   }
