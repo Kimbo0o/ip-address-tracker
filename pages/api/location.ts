@@ -9,7 +9,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const target = req.body.target || req.socket.remoteAddress;
+  const target = req.body.target || req.headers["x-real-ip"];
   let targetParam = _isValidIP(target)
     ? `ipAddress=${target}`
     : `domain=${target}`;
