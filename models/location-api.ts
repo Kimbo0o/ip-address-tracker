@@ -9,6 +9,8 @@ interface ILocationAPIExternalDataLocation {
   region: string;
   timezone: string;
   postalCode: string;
+  lat: number;
+  lng: number;
 }
 
 export interface ILocationAPIInternalData {
@@ -16,4 +18,6 @@ export interface ILocationAPIInternalData {
   location: string;
   timezone: string;
   isp: string;
+  lat: number;
+  lng: number;
 }

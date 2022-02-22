@@ -2,22 +2,10 @@ import styles from "./SearchForm.module.scss";
 import Image from "next/image";
 import React, { useState } from "react";
 
-const SearchForm: React.FC = () => {
-  const loadLocationInfo = async (target: string) => {
-    const response = await fetch("/api/location", {
-      method: "POST",
-      body: JSON.stringify({ target }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    console.log(data);
-  };
-
+const SearchForm: React.FC<{ onSubmit: (string) => void }> = (props) => {
   const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    loadLocationInfo(text);
+    props.onSubmit(text);
   };
 
   const onTextChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
