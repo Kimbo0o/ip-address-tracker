@@ -9,7 +9,7 @@ const LocationInfos: React.FC<{ data: ILocationAPIInternalData }> = (props) => {
   const data = props.data;
   const ip = data?.ip || "";
   const location = data?.location || "";
-  const timezone = data?.timezone || "";
+  const timezone = data?.timezone ? `UTC ${data.timezone}` : "";
   const isp = data?.isp || "";
 
   return (
