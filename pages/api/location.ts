@@ -9,26 +9,33 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const target = req.body.target || req.headers["x-nf-client-connection-ip"];
-  let targetParam = _isValidIP(target)
-    ? `ipAddress=${target}`
-    : `domain=${target}`;
-  const key = process.env.GEOLOCATION_APIKEY;
-  const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${key}&${targetParam}`;
-  const response = await fetch(url);
-  const extData = (await response.json()) as ILocationAPIExternalData;
-  if (extData.ip) {
-    const data: ILocationAPIInternalData = {
-      ip: extData.ip,
-      location: `${extData.location.city}, ${extData.location.region} ${extData.location.postalCode}`,
-      timezone: extData.location.timezone,
-      isp: extData.isp,
-      lat: extData.location.lat,
-      lng: extData.location.lng,
-    };
-    res.status(200).json({ data, address: target });
+  const target =
+    req.body.target || req.headers["x-nf-client-connection-ip"] || null;
+  if (target) {
+    let targetParam = _isValidIP(target)
+      ? `ipAddress=${target}`
+      : `domain=${target}`;
+    const key = process.env.GEOLOCATION_APIKEY;
+    const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${key}&${targetParam}`;
+    const response = await fetch(url);
+    const extData = (await response.json()) as ILocationAPIExternalData;
+    if (extData.ip) {
+      const data: ILocationAPIInternalData = {
+        ip: extData.ip,
+        location: `${extData.location.city}, ${extData.location.region} ${extData.location.postalCode}`,
+        timezone: extData.location.timezone,
+        isp: extData.isp,
+        lat: extData.location.lat,
+        lng: extData.location.lng,
+      };
+      res.status(200).json({ data, success: true });
+    } else {
+      res
+        .status(422)
+        .json({ message: "Input could not be processed", success: false });
+    }
   } else {
-    res.status(422).json({ message: "Input could not be processed" });
+    res.status(400).json({ message: "No IP/Target provided", success: false });
   }
 }
 

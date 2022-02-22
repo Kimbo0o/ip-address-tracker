@@ -30,9 +30,15 @@ const Home: NextPage = () => {
         "Content-Type": "application/json",
       },
     });
-    const { data }: { data: ILocationAPIInternalData } = await response.json();
-    setLocationData(data);
-    updateMap(data.lat, data.lng);
+    const {
+      data,
+      success,
+    }: { data: ILocationAPIInternalData; success: boolean } =
+      await response.json();
+    if (success) {
+      setLocationData(data);
+      updateMap(data.lat, data.lng);
+    }
   };
 
   const updateMap = (lat: number, lng: number) => {
