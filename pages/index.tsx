@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   const [lng, setLng] = useState(0);
 
   useEffect(() => {
-    // loadLocationInfo(null);
+    loadLocationInfo(null);
   }, []);
 
   const loadLocationInfo = async (target?: string) => {
