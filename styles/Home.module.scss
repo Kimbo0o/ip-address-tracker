@@ -1,7 +1,7 @@
 .container {
   display: grid;
   height: 100vh;
-  flex-direction: column;
+  width: 100vw;
   grid-template-columns: 1fr;
   grid-template-rows: min-content 1fr;
 }
@@ -14,6 +14,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  grid-column: 1 / -1;
+  grid-row: 1 / span 1;
 }
 
 .headline {
@@ -23,4 +25,6 @@
 }
 
 .main {
+  grid-column: 1 / -1;
+  grid-row: 2 / span 1;
 }

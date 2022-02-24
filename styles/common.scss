@@ -3,3 +3,12 @@ $color-very-dark-grey: hsl(0, 0%, 17%);
 $color-dark-gray: hsl(0, 0%, 59%);
 $border-radius-controls: 2rem;
 $box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 5%);
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == tab-land {
+    // 1200px;
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+}

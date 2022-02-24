@@ -4,7 +4,6 @@ import { LatLngExpression } from "leaflet";
 
 const Map: React.FC<{ lat: number; lng: number }> = (props) => {
   const position: LatLngExpression = [props.lat, props.lng];
-  console.log("rerender");
   return (
     <MapContainer className={styles.leaflet} center={position} zoom={13}>
       <TileLayer

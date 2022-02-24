@@ -7,6 +7,11 @@
   background-color: #fff;
   box-shadow: $box-shadow;
   z-index: 1000;
+
+  @include respond(tab-land) {
+    flex-direction: column;
+    margin-bottom: -335px;
+  }
 }
 
 .info-wrap {

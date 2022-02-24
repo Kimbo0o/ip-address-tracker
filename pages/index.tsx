@@ -58,7 +58,9 @@ const Home: NextPage = () => {
         <SearchForm onSubmit={loadLocationInfo} />
         <LocationInfos data={locationData} />
       </header>
-      <main>{showMap && <MapNoSSR lat={lat} lng={lng} />}</main>
+      <main className={styles.main}>
+        {showMap && <MapNoSSR lat={lat} lng={lng} />}
+      </main>
     </div>
   );
 };
