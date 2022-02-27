@@ -19,3 +19,9 @@ html {
 body {
   font-family: "Rubik", Arial, Helvetica, sans-serif;
 }
+
+//leaflet
+.leaflet-control-zoom,
+.leaflet-control-attribution {
+  display: none;
+}
