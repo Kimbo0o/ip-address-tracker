@@ -2,8 +2,10 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang="en">
       <Head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Frontend Mentor Challenge" />
         <link rel="icon" type="iamge/png" href="/favicon-32x32.png" />
         <link
