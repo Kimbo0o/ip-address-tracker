@@ -5,9 +5,27 @@ $border-radius-controls: 2rem;
 $box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 5%);
 
 @mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    // 600px;
+    @media only screen and (max-width: 27.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    // 900px;
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  }
   @if $breakpoint == tab-land {
     // 1200px;
     @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    // 1800px;
+    @media only screen and (min-width: 112.5em) {
       @content;
     }
   }
