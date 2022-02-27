@@ -7,7 +7,7 @@ export default function Document() {
         <meta name="description" content="Frontend Mentor Challenge" />
         <link rel="icon" type="iamge/png" href="/favicon-32x32.png" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=optional"
+          href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700"
           rel="stylesheet"
         />
         <link
