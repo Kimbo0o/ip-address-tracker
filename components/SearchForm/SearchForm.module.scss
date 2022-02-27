@@ -6,6 +6,10 @@
   display: flex;
   margin-bottom: 5rem;
   box-shadow: $box-shadow;
+
+  @include respond(phone) {
+    margin-bottom: 3rem;
+  }
 }
 
 .input-text-address,
@@ -15,7 +19,7 @@
 }
 
 .input-text-address {
-  font-size: 1.8rem;
+  font-size: 18px;
   border: none;
   border-radius: $border-radius-controls 0 0 $border-radius-controls;
   font-family: inherit;

@@ -1,3 +1,5 @@
+@import "./common.scss";
+
 .container {
   display: grid;
   height: 100vh;
@@ -17,12 +19,21 @@
   align-items: center;
   grid-column: 1 / -1;
   grid-row: 1 / span 1;
+
+  @include respond(phone) {
+    padding: 3rem;
+  }
 }
 
 .headline {
   font-size: 3rem;
   color: #fff;
-  margin-bottom: 2.5rem;
+  margin: 0.67rem 0 2.5rem;
+  font-weight: 500;
+
+  @include respond(phone) {
+    margin: 0.5rem 0 2.5rem;
+  }
 }
 
 .main {

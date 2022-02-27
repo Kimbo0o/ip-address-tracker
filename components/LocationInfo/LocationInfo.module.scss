@@ -1,6 +1,9 @@
 @import "../../styles/common.scss";
 
 .info {
+  @include respond(tab-port) {
+    text-align: center;
+  }
 }
 
 .label {
