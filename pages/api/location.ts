@@ -32,7 +32,11 @@ export default async function handler(
     } else {
       res
         .status(422)
-        .json({ message: "Input could not be processed", success: false });
+        .json({
+          message: "Input could not be processed",
+          success: false,
+          target: target,
+        });
     }
   } else {
     res.status(400).json({ message: "No IP/Target provided", success: false });
