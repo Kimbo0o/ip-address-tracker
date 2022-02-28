@@ -19,9 +19,14 @@ const Home: NextPage = () => {
     useState<ILocationAPIInternalData>(null);
 
   useEffect(() => {
+    // load location info with own initial render
     loadLocationInfo(null);
   }, []);
 
+  /**
+   * Loads location info for specific ip/domain or current ip and updates child components
+   * @param target Target ip/domain
+   */
   const loadLocationInfo = async (target?: string) => {
     const response = await fetch("/api/location", {
       method: "POST",
@@ -41,6 +46,11 @@ const Home: NextPage = () => {
     }
   };
 
+  /**
+   * Updates Map values and forces reload
+   * @param lat Latitude of new position
+   * @param lng Longitude of new position
+   */
   const updateMap = (lat: number, lng: number) => {
     setLat(lat);
     setLng(lng);
