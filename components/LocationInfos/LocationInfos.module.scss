@@ -4,23 +4,22 @@
   width: 100%;
   max-width: 108rem;
   margin-bottom: -11rem;
-  display: flex;
   border-radius: 2rem;
   background-color: #fff;
   box-shadow: $box-shadow;
   z-index: 1000;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 
   @include respond(tab-port) {
-    flex-direction: column;
     margin-bottom: -23rem;
+    grid-template-columns: 1fr;
   }
 }
 
 .info-wrap {
   padding: 0 3rem;
   margin: 3.5rem 0;
-  box-sizing: border-box;
-  flex: 1;
 
   &:not(:last-child) {
     border-right: 1px solid $color-light-gray;
