@@ -19,6 +19,7 @@
   align-items: center;
   grid-column: 1 / -1;
   grid-row: 1 / span 1;
+  box-shadow: $box-shadow;
 
   @include respond(phone) {
     padding: 3rem;

@@ -38,4 +38,8 @@
   justify-content: center;
   cursor: pointer;
   background-color: $color-very-dark-grey;
+
+  &:active {
+    filter: brightness(1.4);
+  }
 }
