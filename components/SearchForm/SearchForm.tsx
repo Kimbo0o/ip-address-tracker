@@ -23,8 +23,17 @@ const SearchForm: React.FC<{ onSubmit: (string) => void }> = (props) => {
         value={text}
         onChange={onTextChange}
       ></input>
-      <button type="submit" className={styles["btn-address"]}>
-        <Image src="/icon-arrow.svg" width={11} height={14}></Image>
+      <button
+        type="submit"
+        aria-label="submit"
+        className={styles["btn-address"]}
+      >
+        <Image
+          src="/icon-arrow.svg"
+          alt="icon-arrow"
+          width={11}
+          height={14}
+        ></Image>
       </button>
     </form>
   );
