@@ -8,6 +8,8 @@ import LocationInfos from "../components/LocationInfos/LocationInfos";
 import SearchForm from "../components/SearchForm/SearchForm";
 import { useEffect, useState } from "react";
 import { ILocationAPIInternalData } from "../models/location-api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MapNoSSR = dynamic(() => import("../components/Map/Map"), { ssr: false });
 
@@ -35,6 +37,24 @@ const Home: NextPage = () => {
         "Content-Type": "application/json",
       },
     });
+    console.log("res", response);
+    if (!response.ok) {
+      switch (response.status) {
+        case 422:
+          toast.error(
+            "Input could not be processed. Please enter a valid IP address or domain before submitting."
+          );
+          break;
+        case 400:
+          toast.error("Please provide IP/Target before submitting.");
+          break;
+        default:
+          toast.error(
+            "Error loading data. Please try again with a different input."
+          );
+      }
+      return;
+    }
     const {
       data,
       success,
@@ -58,6 +78,8 @@ const Home: NextPage = () => {
     setShowMap(true);
   };
 
+  const showError = () => {};
+
   return (
     <div className={styles.container}>
       <Head>
@@ -71,6 +93,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         {showMap && <MapNoSSR lat={lat} lng={lng} />}
       </main>
+      <ToastContainer />
     </div>
   );
 };

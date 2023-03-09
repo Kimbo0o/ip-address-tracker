@@ -39,7 +39,8 @@ export default async function handler(
     } else {
       // return invalid data
       res.status(422).json({
-        message: "Input could not be processed",
+        message:
+          "Input could not be processed. Please enter a valid IP address or domain.",
         success: false,
         target: target,
       });
